@@ -39,6 +39,16 @@ endif()
 
 project(falcosecurity-libs)
 
+
+include(FetchContent)
+FetchContent_Declare(
+  dnsparser
+  URL      https://github.com/packetzero/dnsparser/archive/refs/tags/1.1.tar.gz
+  URL_HASH SHA256=7db43a4682cf0e71a378a131648b0879dd7bed0bb8d07aad892d7835a7589d7b
+)
+FetchContent_MakeAvailable(dnsparser)
+
+
 option(USE_BUNDLED_DEPS "Enable bundled dependencies instead of using the system ones" ON)
 option(MINIMAL_BUILD "Produce a minimal build with only the essential features (no eBPF probe driver, no kubernetes, no mesos, no marathon and no container metadata)" OFF)
 option(MUSL_OPTIMIZED_BUILD "Enable if you want a musl optimized build" OFF)
